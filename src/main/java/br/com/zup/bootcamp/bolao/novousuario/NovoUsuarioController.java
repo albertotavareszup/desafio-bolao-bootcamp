@@ -5,16 +5,20 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 1 ponto - acoplamento com classes específicas
- * 1 ponto - branches(if,else,loops,switch,case,? ternario,: ternario)
- * 1 ponto - função como argumento (branch disfarçada)
+ * 1 ponto - acoplamento com classes específicas 1 ponto -
+ * branches(if,else,loops,switch,case,? ternario,: ternario) 1 ponto - função
+ * como argumento (branch disfarçada)
+ * 
  * @author albertoluizsouza
  *
  */
@@ -26,10 +30,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 // limite máximo de 7 pontos
 public class NovoUsuarioController {
-	
+
 	@Autowired
-	//1 UsuarioRepository
+	// 1 UsuarioRepository
 	private UsuarioRepository usuarioRepository;
+	@Autowired
+	private BloqueiaEmailDuplicadoValidator bloqueiaEmailDuplicadoValidator;
+
+	@InitBinder
+	public void init(WebDataBinder binder) {
+		binder.addValidators(bloqueiaEmailDuplicadoValidator);
+	}
 	
 	@PostMapping(value = "/usuarios")
 	//dados de fora do sistema que querem entrar no sistema

@@ -24,6 +24,9 @@ public class Usuario {
 	private @NotBlank @Email String login;
 	private @NotBlank @Length(min = 6) String senha;
 
+	@Deprecated
+	public Usuario() {}
+
 	//entrada de dados só que é do sistema para o sistema
 	public Usuario(@NotBlank @Email String login,
 			@NotBlank @Length(min = 6) String senha) {
