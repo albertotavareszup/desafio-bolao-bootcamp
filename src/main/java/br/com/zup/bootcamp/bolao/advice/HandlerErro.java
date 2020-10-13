@@ -23,6 +23,7 @@ public class HandlerErro {
         log.info("Tratando {}", methodArgumentNotValidException);
         List<String> errors = methodArgumentNotValidException.getBindingResult().getAllErrors().stream().map(e -> e.getDefaultMessage()).collect(Collectors.toList());
         HashMap<String, List<String>> response = new HashMap<>();
+        response.put("erros", errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 }
