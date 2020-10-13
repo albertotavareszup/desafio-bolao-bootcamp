@@ -33,8 +33,12 @@ public class TimeController {
         Time time = novoTimeRequest.toModel();
         manager.persist(time);
         return ResponseEntity
+<<<<<<< HEAD
                 .created(uriComponentsBuilder.buildAndExpand("/times/{id}",
                         time.getId()).toUri()).build();
+=======
+                .created(uriComponentsBuilder.path("/times").buildAndExpand("/{id}",time.getId()).toUri()).build();
+>>>>>>> a5090d8560429b3703ecac29fe17801b5fb85d88
 
     }
 
