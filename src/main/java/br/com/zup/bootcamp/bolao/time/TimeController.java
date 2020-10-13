@@ -1,5 +1,7 @@
 package br.com.zup.bootcamp.bolao.time;
 
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,14 +21,20 @@ public class TimeController {
     @Autowired
     private EntityManager manager;
 
+    private Logger logger = LoggerFactory.getLogger(TimeController.class);
+
+    
+
     @Transactional
     @PostMapping
-    public ResponseEntity<?> criarTime(@RequestBody @Valid NovoTimeRequest novoTimeRequest, UriComponentsBuilder uriComponentsBuilder){
+    public ResponseEntity<?> criarTime(@RequestBody @Valid NovoTimeRequest novoTimeRequest,
+                                       UriComponentsBuilder uriComponentsBuilder){
 
         Time time = novoTimeRequest.toModel();
         manager.persist(time);
         return ResponseEntity
-                .created(uriComponentsBuilder.buildAndExpand("/times/{id}",time.getId()).toUri()).build();
+                .created(uriComponentsBuilder.buildAndExpand("/times/{id}",
+                        time.getId()).toUri()).build();
 
     }
 

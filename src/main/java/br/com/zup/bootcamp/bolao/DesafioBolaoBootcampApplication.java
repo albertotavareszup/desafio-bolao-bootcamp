@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DesafioBolaoBootcampApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DesafioBolaoBootcampApplication.class, args);
+		SpringApplication.run(DesafioBolaoBootcampApplication.class,
+				args);
 	}
 
 }
