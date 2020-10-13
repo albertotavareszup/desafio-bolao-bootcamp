@@ -26,6 +26,26 @@ public class Time {
         this.dataDeFundacao = dataDeFundacao;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setDataDeFundacao(LocalDate dataDeFundacao) {
+        this.dataDeFundacao = dataDeFundacao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public LocalDate getDataDeFundacao() {
+        return dataDeFundacao;
+    }
+
     public Long getId() {
         return this.id;
     }

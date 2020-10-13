@@ -26,7 +26,7 @@ public class TimeController {
         Time time = novoTimeRequest.toModel();
         manager.persist(time);
         return ResponseEntity
-                .created(uriComponentsBuilder.buildAndExpand("/times/{id}",time.getId()).toUri()).build();
+                .created(uriComponentsBuilder.path("/times").buildAndExpand("/{id}",time.getId()).toUri()).build();
 
     }
 
