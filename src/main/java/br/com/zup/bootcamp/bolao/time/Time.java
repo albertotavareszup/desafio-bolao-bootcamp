@@ -49,4 +49,13 @@ public class Time {
     public Long getId() {
         return this.id;
     }
+
+    @Override
+    public String toString() {
+        return "Time{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", dataDeFundacao=" + dataDeFundacao +
+                '}';
+    }
 }

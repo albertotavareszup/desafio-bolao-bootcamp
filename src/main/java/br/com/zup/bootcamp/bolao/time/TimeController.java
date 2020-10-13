@@ -1,6 +1,6 @@
 package br.com.zup.bootcamp.bolao.time;
 
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +23,6 @@ public class TimeController {
 
     private Logger logger = LoggerFactory.getLogger(TimeController.class);
 
-    
-
     @Transactional
     @PostMapping
     public ResponseEntity<?> criarTime(@RequestBody @Valid NovoTimeRequest novoTimeRequest,
@@ -32,13 +30,9 @@ public class TimeController {
 
         Time time = novoTimeRequest.toModel();
         manager.persist(time);
+        logger.info("Salvo time {}", time);
         return ResponseEntity
-<<<<<<< HEAD
-                .created(uriComponentsBuilder.buildAndExpand("/times/{id}",
-                        time.getId()).toUri()).build();
-=======
-                .created(uriComponentsBuilder.path("/times").buildAndExpand("/{id}",time.getId()).toUri()).build();
->>>>>>> a5090d8560429b3703ecac29fe17801b5fb85d88
+                .created(uriComponentsBuilder.path("/times/{id}").buildAndExpand(time.getId()).toUri()).build();
 
     }
 
