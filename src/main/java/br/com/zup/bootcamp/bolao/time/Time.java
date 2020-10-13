@@ -26,4 +26,7 @@ public class Time {
         this.dataDeFundacao = dataDeFundacao;
     }
 
+    public Long getId() {
+        return this.id;
+    }
 }
